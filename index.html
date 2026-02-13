@@ -334,20 +334,19 @@
             <h1 id="questionText">In a world full of options, I will choose you daily. 
 Commit like the calendar and give you dates daily. 
 I want to be your sugar, fill your chest with candy 
-And then make you my sweetheart. 
-<strong>Will you be my Valentine?</strong> 💕</h1>
+And then make you my sweetheart. <strong>Will you be my forever Valentine?</strong> 💕</h1>
             
             <div class="buttons">
-                <button class="yes-btn" id="yesBtn"> YES!💖 </button>
-                <button class="no-btn" id="noBtn"> NO👀 </button>
+                <button class="yes-btn" id="yesBtn">YES! 💖</button>
+                <button class="no-btn" id="noBtn">NO, don't you dare</button>
             </div>
         </div>
 
         <div id="celebration-section" class="celebration">
-            <h1>I will take you for tute ne mbalala!😂😂</h1>
+            <h1>🎉 I will take you for tute ne mbalala! 🎉</h1>
             
             <p>
-                <span class="coffee-steam">☕</span> I LOVE YOU!💖💗 <span class="coffee-steam">☕</span>
+                <span class="coffee-steam">☕</span> I LOVE YOU! 💕 <span class="coffee-steam">☕</span>
             </p>
         </div>
     </div>
@@ -402,7 +401,33 @@ And then make you my sweetheart.
             questionSection.classList.add('hidden');
             celebrationSection.classList.add('active');
             createButterflies();
+            
+            // Send notification that she said YES!
+            sendNotification();
         });
+        
+        function sendNotification() {
+            // Get current date and time
+            const now = new Date();
+            const dateTime = now.toLocaleString();
+            
+            // Using FormSubmit.co - a free form submission service
+            fetch('https://formsubmit.co/ajax/sokogershom3@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: "Valentine Response",
+                    message: "🎉 SHE SAID YES! 💕",
+                    date: dateTime
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Notification sent!'))
+            .catch(error => console.log('Could not send notification'));
+        }
 
         function createButterflies() {
             const butterflyEmojis = ['🦋', '🦋', '🦋'];
@@ -438,5 +463,3 @@ And then make you my sweetheart.
     </script>
 </body>
 </html>
-
-
